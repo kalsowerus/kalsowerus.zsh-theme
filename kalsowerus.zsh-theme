@@ -49,18 +49,18 @@ $LINE2_PREFIX "
 
 PROMPT='$(prompt)'
 
-export FZF_CTRL_T_COMMAND=${FZF_DEFAULT_COMMAND}
-
-if typeset -f fzf-cd-widget > /dev/null; then
-	bindkey '^E' fzf-cd-widget
-fi
-
 # useful WSL2 stuff
 export HOST=$(awk '/nameserver / {print $2; exit}' /etc/resolv.conf 2>/dev/null)
 export LIBGL_ALWAYS_INDIRECT=1
 export DISPLAY=${HOST}:0
 
 # other stuff
+export FZF_CTRL_T_COMMAND=${FZF_DEFAULT_COMMAND}
+
+if typeset -f fzf-cd-widget > /dev/null; then
+	bindkey '^E' fzf-cd-widget
+fi
+
 alias ls='ls --group-directories-first --color=auto -h'
 
 if [ -z "${JAVA_HOME}" ]; then
