@@ -6,14 +6,9 @@ First, clone the repository:
 git clone https://github.com/kalsowerus/zsh-theme.git ~/.oh-my-zsh/custom/themes/kalsowerus
 ```
 
-Then create a symlink in the `custom/themes` directory:
+Then run the install script:
 
 ```zsh
-ln -s ~/.oh-my-zsh/custom/themes/kalsowerus/kalsowerus.zsh-theme ~/.oh-my-zsh/custom/themes/kalsowerus.zsh-theme
+~/.oh-my-zsh/custom/themes/kalsowerus/install.sh
 ```
-
-You can now select the theme by setting `ZSH_THEME="kalsowerus"` in your `.zshrc`.
-
-## Useful plugins
-git zsh-syntax-highlighting zsh-autosuggestions fzf fzf-tab sudo
 
