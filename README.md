@@ -1,3 +1,5 @@
+![preview](theme.png)
+
 # Install
 
 First, clone the repository:
