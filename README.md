@@ -20,9 +20,9 @@ And then update your `ZSH_THEME` in your `.zshrc` like this:
 ZSH_THEME="kalsowerus"
 ```
 
-**Warning the following install script will create a new `.zshrc`. Do not execute it if you already modified your `.zshrc`.**
-
 ## Installation script
+
+**Warning the following install script will create a new `.zshrc`. Do not execute it if you already modified your `.zshrc`.**
 
 Run the install script, this will create a new `.zshrc` and install a few plugins:
 
