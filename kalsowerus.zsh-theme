@@ -64,7 +64,7 @@ fi
 alias ls='ls --group-directories-first --color=auto -h'
 
 if [ -z "${JAVA_HOME}" ]; then
-	export JAVA_HOME=/test
+	export JAVA_HOME=/opt/jdk
 fi
 export PATH=$PATH:$JAVA_HOME/bin
 
