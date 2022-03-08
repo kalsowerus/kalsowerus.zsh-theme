@@ -3,12 +3,20 @@ background() {
 	echo "%{$bg[$1]%}$2%{$reset_color%}"
 }
 
+last_background() {
+	echo "%(?:%{$bg[$1]%}:%{$bg[red]%})$2%{$reset_color%}"
+}
+
 foreground() {
 	echo "%{$fg[$1]%}$2%{$reset_color%}"
 }
 
 arrow() {
 	echo $(background $1 $(foreground $2 " $4 "))$(background $3 $(foreground $1 ''))
+}
+
+last_arrow() {
+	echo $(background $1 $(foreground $2 " $4 "))$(last_background $3 $(foreground $1 ''))
 }
 
 BLACK='black'
@@ -18,13 +26,9 @@ NONE='none'
 COLOR_NAME='green'
 COLOR_DIRECTORY='blue'
 COLOR_GIT='magenta'
+COLOR_NVM='yellow'
 COLOR_ERROR='red'
 
-NAME_ARROW=$(arrow $COLOR_NAME $BLACK $COLOR_DIRECTORY '%n@%m')
-DIRECTORY=$(arrow $COLOR_DIRECTORY $BLACK $NONE '%~')
-DIRECTORY_GIT=$(arrow $COLOR_DIRECTORY $BLACK $COLOR_GIT '%~')
-DIRECTORY_ERROR=$(arrow $COLOR_DIRECTORY $BLACK $COLOR_ERROR '%~' )
-DIRECTORY_ARROW="%(?:$DIRECTORY:$DIRECTORY_ERROR)"
 ERROR=$(arrow $COLOR_ERROR $BLACK $NONE '%?')
 ERROR_ARROW="%(?::$ERROR)"
 LINE1_PREFIX=$(foreground $COLOR_NAME '┌')
@@ -38,13 +42,32 @@ git_arrow() {
 }
 
 prompt() {
-	if ! __git_prompt_git rev-parse --git-dir &> /dev/null; then
-		echo "$LINE1_PREFIX$NAME_ARROW$DIRECTORY_ARROW$ERROR_ARROW
-$LINE2_PREFIX "
-	else
-		echo "$LINE1_PREFIX$NAME_ARROW$DIRECTORY_GIT$(git_arrow $(git_prompt_info))$ERROR_ARROW
-$LINE2_PREFIX "
+	echo -n "$LINE1_PREFIX"
+
+	declare -a arrows
+	arrows[1]=($COLOR_NAME '%n@%m')
+	arrows[3]=($COLOR_DIRECTORY '%~')
+	local index=5
+	
+	if __git_prompt_git rev-parse --get-dir &> /dev/null; then
+		arrows[$index]=($COLOR_GIT "$(git_prompt_info)")
+		((index+=2))
 	fi
+
+	local nvm_prompt=$(nvm_prompt_info)
+	if [ ! -z $nvm_prompt ]; then
+		arrows[$index]=($COLOR_NVM $nvm_prompt)
+	fi
+
+	for i in {1..${#arrows}..2}; do
+		if [ $i -lt $((${#arrows} - 2)) ]; then
+			echo -n "$(arrow $arrows[$i] $BLACK $arrows[(($i + 2))] $arrows[(($i + 1))])"
+		else
+			echo -n "$(last_arrow $arrows[$i] $BLACK $NONE $arrows[(($i + 1))])"
+		fi
+	done
+
+	echo -n "$ERROR_ARROW\n$LINE2_PREFIX "
 }
 
 PROMPT='$(prompt)'
