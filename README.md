@@ -5,7 +5,7 @@
 First, clone the repository:
 
 ```zsh
-git clone https://github.com/kalsowerus/zsh-theme.git ~/.oh-my-zsh/custom/themes/kalsowerus
+git clone https://github.com/kalsowerus/kalsowerus.zsh-theme.git ~/.oh-my-zsh/custom/themes/kalsowerus
 ```
 
 ## Manual installation
