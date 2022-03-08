@@ -23,10 +23,10 @@ BLACK='black'
 WHITE='white'
 NONE='none'
 
-COLOR_NAME='green'
-COLOR_DIRECTORY='blue'
-COLOR_GIT='magenta'
-COLOR_NVM='yellow'
+COLOR_NAME='blue'
+COLOR_DIRECTORY='magenta'
+COLOR_GIT='cyan'
+COLOR_NVM='green'
 COLOR_ERROR='red'
 
 ERROR=$(arrow $COLOR_ERROR $BLACK $NONE '%?')
