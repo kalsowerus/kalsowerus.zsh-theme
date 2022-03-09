@@ -1,5 +1,7 @@
 ![preview](theme.png)
 
+Requires a Powerline-compatible font.
+
 # Install (Antigen)
 
 In your `.zshrc`:
