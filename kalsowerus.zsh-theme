@@ -29,7 +29,7 @@ COLOR_GIT='cyan'
 COLOR_NVM='green'
 COLOR_ERROR='red'
 
-ERROR=$(arrow $COLOR_ERROR $BLACK $NONE '%?')
+ERROR=$(arrow $COLOR_ERROR $BLACK $NONE '✗ %?')
 ERROR_ARROW="%(?::$ERROR)"
 LINE1_PREFIX=$(foreground $COLOR_NAME '┌')
 LINE2_PREFIX=$(foreground $COLOR_NAME '└─')$(foreground $WHITE '$')
