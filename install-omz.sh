@@ -23,6 +23,6 @@ fi
 if [ -e ~/.zshrc ]; then
 	mv ~/.zshrc ~/.zshrc.old
 fi
-cp $ZSH/custom/themes/kalsowerus/.zshrc ~/.zshrc
+cp $ZSH/custom/themes/kalsowerus/omz.zshrc ~/.zshrc
 sed -i "1iexport ZSH=\"$HOME/.oh-my-zsh\"" ~/.zshrc
 
