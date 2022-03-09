@@ -56,7 +56,7 @@ prompt() {
 
 	local nvm_prompt=$(nvm_prompt_info)
 	if [ ! -z $nvm_prompt ]; then
-		arrows[$index]=($COLOR_NVM $nvm_prompt)
+		arrows[$index]=($COLOR_NVM "npm $nvm_prompt")
 	fi
 
 	for i in {1..${#arrows}..2}; do
