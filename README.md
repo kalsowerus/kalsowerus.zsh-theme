@@ -29,6 +29,6 @@ ZSH_THEME="kalsowerus"
 Run the install script, this will create a new `.zshrc` and install a few plugins:
 
 ```zsh
-~/.oh-my-zsh/custom/themes/kalsowerus/install.sh
+~/.oh-my-zsh/custom/themes/kalsowerus/install-omz.sh
 ```
 
