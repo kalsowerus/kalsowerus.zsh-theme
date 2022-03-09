@@ -16,6 +16,12 @@ antigen theme kalsowerus/kalsowerus.zsh-theme
 antigen apply
 ```
 
+Or copy my example `.zshrc`
+
+```zsh
+curl https://raw.githubusercontent.com/kalsowerus/kalsowerus.zsh-theme/master/antigen.zshrc -o ~/.zshrc
+```
+
 # Install (Oh-My-Zsh)
 
 First, clone the repository:
