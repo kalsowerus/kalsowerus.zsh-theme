@@ -8,6 +8,7 @@ antigen bundle sudo
 
 antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle zsh-users/zsh-syntax-highlighting
+antigen bundle zsh-users/zsh-completions
 antigen bundle Aloxaf/fzf-tab
 
 antigen theme kalsowerus/kalsowerus.zsh-theme
