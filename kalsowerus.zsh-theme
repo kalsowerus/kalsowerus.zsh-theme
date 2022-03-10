@@ -36,6 +36,8 @@ LINE2_PREFIX=$(foreground $COLOR_NAME '└─')$(foreground $WHITE '$')
 
 ZSH_THEME_GIT_PROMPT_PREFIX=' '
 ZSH_THEME_GIT_PROMPT_SUFFIX=''
+ZSH_THEME_GIT_PROMPT_AHEAD_REMOTE='↑'
+ZSH_THEME_GIT_PROMPT_BEHIND_REMOTE='↓'
 
 git_arrow() {
 	echo "%(?:$(arrow $COLOR_GIT $BLACK $NONE $1):$(arrow $COLOR_GIT $BLACK $COLOR_ERROR $1))"
@@ -50,7 +52,12 @@ prompt() {
 	local index=5
 	
 	if __git_prompt_git rev-parse --get-dir &> /dev/null; then
-		arrows[$index]=($COLOR_GIT "$(git_prompt_info)")
+		local git_prompt="$(git_prompt_info)"
+		local remote_status="$(git_remote_status)"
+		if [ -! z $remote_status ]; then
+			git_prompt="$git_prompt $remote_status"
+		fi
+		arrows[$index]=($COLOR_GIT $git_prompt)
 		((index+=2))
 	fi
 
