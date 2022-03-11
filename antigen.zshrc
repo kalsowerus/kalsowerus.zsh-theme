@@ -24,3 +24,4 @@ antigen theme kalsowerus/kalsowerus.zsh-theme
 
 antigen apply
 
+setopt auto_cd
