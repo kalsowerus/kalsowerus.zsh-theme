@@ -83,14 +83,3 @@ prompt() {
 
 PROMPT='$(prompt)'
 
-# useful WSL2 stuff
-(( ! ${+HOST_IP} )) && export HOST_IP=$(awk '/nameserver / {print $2; exit}' /etc/resolv.conf 2>/dev/null)
-(( ! ${+LIBGL_ALWAYS_INDIRECT} )) && export LIBGL_ALWAYS_INDIRECT=1
-(( ! ${+DISPLAY} )) && export DISPLAY=${HOST_IP}:0
-
-# other stuff
-alias ls='ls --group-directories-first --color=auto -h'
-
-(( ! ${+JAVA_HOME} )) && export JAVA_HOME=/opt/jdk
-export PATH=$PATH:$JAVA_HOME/bin
-
