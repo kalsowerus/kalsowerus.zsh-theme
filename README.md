@@ -1,6 +1,9 @@
 ![preview](theme.png)
 
-Requires a Powerline-compatible font.
+# Dependencies
+
+- A Powerline-compatible font
+- Oh My Zsh
 
 # Install (Antigen)
 
