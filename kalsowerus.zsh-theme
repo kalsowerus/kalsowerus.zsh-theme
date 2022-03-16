@@ -58,7 +58,7 @@ prompt() {
 	if __git_prompt_git rev-parse --get-dir &> /dev/null; then
 		local git_prompt="$(git_prompt_info)"
 		local remote_status="$(git_remote_status)"
-		if [ ! -z $remote_status ]; then
+		if [[ -n $remote_status ]]; then
 			git_prompt="$git_prompt $remote_status"
 		fi
 		arrows[$index]=($COLOR_GIT $git_prompt)
@@ -66,12 +66,12 @@ prompt() {
 	fi
 
 	local nvm_prompt=$(nvm_prompt_info)
-	if [ ! -z $nvm_prompt ]; then
+	if [[ -n "$nvm_prompt" ]]; then
 		arrows[$index]=($COLOR_NVM "npm $nvm_prompt")
 	fi
 
 	for i in {1..${#arrows}..2}; do
-		if [ $i -lt $((${#arrows} - 2)) ]; then
+		if [[ $i < $((${#arrows} - 2)) ]]; then
 			echo -n "$(arrow $arrows[$i] $BLACK $arrows[(($i + 2))] $arrows[(($i + 1))])"
 		else
 			echo -n "$(last_arrow $arrows[$i] $BLACK $NONE $arrows[(($i + 1))])"
