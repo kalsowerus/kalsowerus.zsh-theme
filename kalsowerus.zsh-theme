@@ -52,7 +52,11 @@ prompt() {
     echo -n "$LINE1_PREFIX"
 
     declare -a arrows
-    arrows[1]=($COLOR_NAME '%n@%m')
+    if [[ -n "$SSH_CLIENT" ]]; then
+        arrows[1]=($COLOR_NAME '%n@%m')
+    else
+        arrows[1]=($COLOR_NAME '%n')
+    fi
     arrows[3]=($COLOR_DIRECTORY '%~')
     local index=5
     
