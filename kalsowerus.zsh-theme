@@ -72,7 +72,7 @@ prompt() {
 
     local nvm_prompt=$(nvm_prompt_info)
     if [[ -n "$nvm_prompt" ]]; then
-        arrows[$index]=($COLOR_NVM "npm $nvm_prompt")
+        arrows[$index]=($COLOR_NVM "node $nvm_prompt")
     fi
 
     local i
